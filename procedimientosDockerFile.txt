@@ -1,0 +1,47 @@
+FROM node:12.22.1-alpine3.11
+
+WORKDIR /API
+
+COPY . .
+RUN yarn install --production
+
+CMD ["node","app/src/index.js"]
+
+
+vim Dockerfile --> para entrar a crear la imagen
+FROM node:14 // esto quiere decir es el uso SI o Si padre, es una imagen que ya creo otra persona. 
+
+WORKDIR /app  // aca declaramos donde vamos hacer nuestro trabajo es un directorio que no existe
+
+# Copia los archivos de la carpeta Client al directorio de trabajo en el contenedor
+COPY . . // esto lo que hace copiar . el directorio que  . del  contenedor / app 
+
+RUN npm install   /// compila todo lo que tengo en mi node  -- > yarn isntall --production 
+
+EXPOSE 3000
+
+CMD ["node", "/app/src/index.js"]  // al final se especifica el comando que quiero correr: cunaod se inicia el contenedor basado esta imagen se necesita que build esta linea
+
+Esc--> para salir de config. de la imagen
+escribir--> :wq, para guardar los cambios hechos en el Dockerfile
+
+luego para crear la imagen es: 
+docker build -t "nombre-de-imagen" .
+
+para hacerla correr es: 
+docker run 
+
+$ docker run -d -p 3000:3000 --name mi-contenedor countries node index.js
+
+FROM node:lts-alpine3.18
+
+WORKDIR /app
+COPY . .
+RUN npm install
+CMD ["node", "index.js"]
+CMD ["node", "/app/src/index.js"]
+
+FROM amazoncorretto:11-alpine-jdk // de que imagen partimos, se busca la version por docker hub /tags
+MAINTAINER countries //quien es el dueño
+COPY target/mgb-0.0.1-SNAPSHOT.jar  mgb-app.jar /va a copiar el empaquetado a Github
+ENTRYPOINT ["java","-jar","/mgb-app.jar"] // es la instuccion que se va a ejecutar primero
