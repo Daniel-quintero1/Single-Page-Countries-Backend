@@ -15,6 +15,8 @@ const sequelize = new Sequelize({
   password: DB_PASSWORD,
   database: 'country', // El nombre de tu base de datos
   logging: false,
+  path : '/quote/random', // the rest of the url with parameters if needed
+  method : 'GET' // do GET
 });
 
 sequelize
