@@ -4,20 +4,20 @@ const fs = require("fs");
 const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
-// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/country`, {
-//   logging: false, // set to console.log to see the raw SQL queries
-//   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-// });
-const sequelize = new Sequelize({
-  dialect: 'postgres',
-  host: DB_HOST,
-  username: DB_USER,
-  password: DB_PASSWORD,
-  database: 'country', // El nombre de tu base de datos
-  logging: false,
-  path : '/quote/random', // the rest of the url with parameters if needed
-  method : 'GET' // do GET
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/country`, {
+  logging: false, // set to console.log to see the raw SQL queries
+  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
+// const sequelize = new Sequelize({
+//   dialect: 'postgres',
+//   host: DB_HOST,
+//   username: DB_USER,
+//   password: DB_PASSWORD,
+//   database: 'country', // El nombre de tu base de datos
+//   logging: false,
+//   path : '/quote/random', // the rest of the url with parameters if needed
+//   method : 'GET' // do GET
+// });
 
 sequelize
   .authenticate()
