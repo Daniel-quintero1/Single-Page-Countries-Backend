@@ -1,3 +1,7 @@
+Ejemplo 1
+SE COMPIENZA PARA CREAR EL ARCHIVO DOCKER: 
+1. $vim Dockerfile
+//entra en la configuracion y debes ejecutar los siguiente:
 FROM node:12.22.1-alpine3.11
 
 WORKDIR /API
@@ -7,7 +11,7 @@ RUN yarn install --production
 
 CMD ["node","app/src/index.js"]
 
-
+Ejemplo 2.
 vim Dockerfile --> para entrar a crear la imagen
 FROM node:14 // esto quiere decir es el uso SI o Si padre, es una imagen que ya creo otra persona. 
 
@@ -33,6 +37,7 @@ docker run
 
 $ docker run -d -p 3000:3000 --name mi-contenedor countries node index.js
 
+ejemplo 3 de config. Archivo Docker ---> Todo siempre va a depender de como tienes tu App. 
 FROM node:lts-alpine3.18
 
 WORKDIR /app
