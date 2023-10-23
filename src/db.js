@@ -2,17 +2,18 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
-const { DB_USER, DB_PASSWORD, DB_HOST,DB_DEPLOY } = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST,DB_DEPLOY2 } = process.env;
 
-// const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/country`, {
+// var sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/country`, {
 //   logging: false, // set to console.log to see the raw SQL queries
 //   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 // });
 
-const sequelize = new Sequelize(DB_DEPLOY, {
+const sequelize = new Sequelize(DB_DEPLOY2, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
+
 // const sequelize = new Sequelize({
 //   dialect: 'postgres',
 //   host: DB_HOST,
@@ -24,14 +25,14 @@ const sequelize = new Sequelize(DB_DEPLOY, {
 //   method : 'GET' // do GET
 // });
 
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log("Conexión a la base de datos establecida con éxito.");
-//   })
-//   .catch((error) => {
-//     console.error("Error al conectar a la base de datos:", error);
-  // });
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Conexión a la base de datos establecida con éxito.");
+  })
+  .catch((error) => {
+    console.error("Error al conectar a la base de datos:", error);
+  });
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
